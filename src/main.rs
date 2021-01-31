@@ -28,7 +28,7 @@ fn fetch_from_thesaurus(word: &str) -> Vec<(usize, String)> {
         .collect::<Vec<_>>()
 }
 
-fn fetch_from_merrian_webster(word: &str) -> Vec<(usize, String)> {
+fn fetch_from_merriam_webster(word: &str) -> Vec<(usize, String)> {
     fetch_document(&format!("{}/{}", MERRIAM_WEBSTER_URL, word))
         .find(
             Class("syn-list")
@@ -53,7 +53,7 @@ fn main() {
     let word = args().skip(1).next().unwrap().to_lowercase();
 
     let res_1 = fetch_from_thesaurus(&word);
-    let res_2 = fetch_from_merrian_webster(&word);
+    let res_2 = fetch_from_merriam_webster(&word);
     let res_3 = fetch_from_your_dictionary(&word);
 
     let mut result = res_1
