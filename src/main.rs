@@ -31,7 +31,7 @@ async fn fetch_from_thesaurus(word: &str) -> Vec<(usize, String)> {
         .collect::<Vec<_>>()
 }
 
-async fn fetch_from_merrian_webster(word: &str) -> Vec<(usize, String)> {
+async fn fetch_from_merriam_webster(word: &str) -> Vec<(usize, String)> {
     fetch_document(&format!("{}/{}", MERRIAM_WEBSTER_URL, word))
         .await
         .find(
@@ -61,7 +61,7 @@ async fn main() {
 
     let (res_1, res_2, res_3) = join!(
         fetch_from_thesaurus(&word),
-        fetch_from_merrian_webster(&word),
+        fetch_from_merriam_webster(&word),
         fetch_from_your_dictionary(&word)
     );
 
